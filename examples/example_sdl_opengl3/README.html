@@ -1,0 +1,33 @@
+<h1>How to Build</h1>
+
+<ul>
+<li>On Windows with Visual Studio's CLI</li>
+</ul>
+
+<p>```
+set SDL2<em>DIR=path</em>to<em>your</em>sdl2<em>folder
+cl /Zi /MD /I.. /I.... /I%SDL2</em>DIR%\include /I..\libs\gl3w main.cpp ..\imgui<em>impl</em>sdl.cpp ..\imgui<em>impl</em>opengl3.cpp ....\imgui*.cpp ..\libs\gl3w\GL\gl3w.c /FeDebug/example<em>sdl</em>opengl3.exe /FoDebug/ /link /libpath:%SDL2_DIR%\lib\x86 SDL2.lib SDL2main.lib opengl32.lib /subsystem:console</p>
+
+<h1>^^ include paths                                 ^^ source files                                                                                  ^^ output exe                    ^^ output dir   ^^ libraries</h1>
+
+<h1>or for 64-bit:</h1>
+
+<p>cl /Zi /MD /I.. /I.... /I%SDL2<em>DIR%\include /I..\libs\gl3w main.cpp ..\imgui</em>impl<em>sdl.cpp ..\imgui</em>impl<em>opengl3.cpp ....\imgui*.cpp ..\libs\gl3w\GL\gl3w.c /FeDebug/example</em>sdl<em>opengl3.exe /FoDebug/ /link /libpath:%SDL2</em>DIR%\lib\x64 SDL2.lib SDL2main.lib opengl32.lib /subsystem:console
+```</p>
+
+<ul>
+<li>On Linux and similar Unixes</li>
+</ul>
+
+<p><code>
+c++ `sdl2-config --cflags` -I .. -I ../.. -I ../libs/gl3w main.cpp ../imgui_impl_sdl.cpp ../imgui_impl_opengl3.cpp ../../imgui*.cpp ../libs/gl3w/GL/gl3w.c `sdl2-config --libs` -lGL -ldl
+</code></p>
+
+<ul>
+<li>On Mac OS X</li>
+</ul>
+
+<p><code>
+brew install sdl2
+c++ `sdl2-config --cflags` -I .. -I ../.. -I ../libs/gl3w main.cpp ../imgui_impl_sdl.cpp ../imgui_impl_opengl3.cpp ../../imgui*.cpp ../libs/gl3w/GL/gl3w.c `sdl2-config --libs` -framework OpenGl -framework CoreFoundation
+</code></p>
